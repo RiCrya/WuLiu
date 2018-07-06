@@ -17,17 +17,22 @@ public class UserServlet extends HttpServlet {
 	UserService us = new UserServiceImpl();
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user = new User();
 		String userName = request.getParameter("userName");
 		String userPassword = request.getParameter("userPassword");
 		User u = new User();
 		u.setUserName(userName);
 		u.setUserPassword(userPassword);
-		us.login(u);
-		if (u!= null){
-             response.getWriter().write(u.toString());
-        }else {
-             response.getWriter().write("sorry, your username or password is wrong!");
-        }
+		user=us.getLogin(u);
+		if(user == null){
+			request.getRequestDispatcher("/login.jsp?error=nouser").forward(request, response);
+		}
+		if(!user.getUserPassword().equals(u.getUserPassword())){
+			request.getRequestDispatcher("/login.jsp?error=passworderror").forward(request, response);
+		}else{
+			request.setAttribute("user", user);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
+		}
 		
 	}
 

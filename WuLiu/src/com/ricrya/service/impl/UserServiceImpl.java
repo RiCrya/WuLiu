@@ -9,8 +9,12 @@ public class UserServiceImpl implements UserService {
 	
 	UserDao ud = new UserDaoImpl();
 
-	public User login(User u) {
-		return ud.login(u);
+	
+	//登陆方法
+	public User getLogin(User u) {
+		//调用dao查询用户
+		User user = ud.getByUserName(u.getUserName());
+		return user;
 	}
 
 }

@@ -11,15 +11,16 @@ import com.ricrya.utils.ComPoolUtil;
 
 public class UserDaoImpl implements UserDao {
 
-	public User login(User u) {
+	public User getByUserName(String userName) {
+		User user = new User();
+		QueryRunner runner = new ComPoolUtil().getQueryRunner();
+		String sql = "select * from User where userName = ?";
 		try {
-			QueryRunner runner = new ComPoolUtil().getQueryRunner();
-			String sql = "select * from User where username = ? and password = ?";
-			u = runner.query(sql, new BeanHandler<User>(User.class), u.getUserName(),u.getUserPassword());
+			user = runner.query(sql, new BeanHandler<User>(User.class),userName);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return u;
+		return user;
 	}
 
 }

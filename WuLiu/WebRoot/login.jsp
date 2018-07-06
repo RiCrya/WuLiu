@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login.jsp' starting page</title>
+    <title>后台登陆界面</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -149,6 +149,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    }
 			}
 		</style>
+		<script type="text/javascript">
+			var error ='<%=request.getParameter("error")%>';
+  			if(error=='nouser'){
+   				alert("无此用户!");
+ 		 	}
+ 		 	if(error=='passworderror'){
+ 		 		alert("密码错误!");
+ 		 	}
+		</script>
   </head>
   
   <body>
@@ -173,8 +182,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                    </div>
 	                    <span class="text">记住我</span>
 	                    <button type="submit" class="btn btn-default">登录</button>
-               			 </div>
+               			</div>
            			 </form>
+           			 
         		</div>
    			 </div>
 		</div>
