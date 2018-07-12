@@ -1,5 +1,7 @@
 package com.ricrya.service.impl;
 
+import java.util.List;
+
 import com.ricrya.dao.UserDao;
 import com.ricrya.dao.impl.UserDaoImpl;
 import com.ricrya.entity.User;
@@ -16,5 +18,38 @@ public class UserServiceImpl implements UserService {
 		User user = ud.getByUserName(u.getUserName());
 		return user;
 	}
+
+
+	public List<User> getAll() {
+		String sql = "select * from user";
+		return ud.getAll(sql);
+	}
+
+
+	public boolean update(Object... params) {
+		String sql = "update user set userName = ? , userPassword = ? where id = ?";
+		return ud.update(sql, params);
+	}
+
+
+	public boolean detele(int id) {
+		String sql = "delete from  user where id = ?";
+		return ud.detele(sql, id);
+	}
+
+
+	public boolean add(Object... params) {
+		String sql = "insert into user (userName,userPassword) values (?,?)";
+		return ud.add(sql, params);
+	}
+
+
+	public List<User> search(Object... params) {
+		String sql = "SELECT * FROM user WHERE userName LIKE ?";
+		return ud.search(sql, params);
+	}
+
+
+	
 
 }

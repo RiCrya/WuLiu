@@ -5,10 +5,42 @@
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>com.ricrya.servlet.UserServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ParcelServlet</servlet-name>
+    <servlet-class>com.ricrya.servlet.ParcelServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SiteServlet</servlet-name>
+    <servlet-class>com.ricrya.servlet.SiteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CompanyServlet</servlet-name>
+    <servlet-class>com.ricrya.servlet.CompanyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>rukouServlet</servlet-name>
+    <servlet-class>com.ricrya.servlet.rukouServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ParcelServlet</servlet-name>
+    <url-pattern>/ParcelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SiteServlet</servlet-name>
+    <url-pattern>/SiteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CompanyServlet</servlet-name>
+    <url-pattern>/CompanyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>rukouServlet</servlet-name>
+    <url-pattern>/rukouServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -18,7 +50,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-   <filter>
+  <filter>
     <display-name>Encodingfliter</display-name>
     <filter-name>Encodingfliter</filter-name>
     <filter-class>com.ricrya.filter.Encodingfliter</filter-class>

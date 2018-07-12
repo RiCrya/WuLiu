@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -30,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ol class="breadcrumb">
                         <li class="active">主页
                         </li>
-                        <li class="active">物流公司价格信息
+                        <li class="active">用户信息
                         </li>
                     </ol>
 
@@ -39,10 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            	 搜索
                         </div>
                         <div class="panel-body">
-                            <form role="form" class="form-inline">
+                            <form role="form" class="form-inline" method="post" action="${pageContext.request.contextPath }/UserServlet?method=search">
                                 <div class="form-group">
                                     <label for="name">名称</label>
-                                    <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="请输入名称">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-default">开始搜索</button>
@@ -63,18 +64,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th>操作</th>
                                 </tr>
                             </thead>
+                             <c:forEach items="${list }" var="user">
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>RiCrya</td>
-                                    <td>123456</td>
+                                    <td>${user.id }</td>
+                                    <td>${user.userName }</td>
+                                    <td>${user.userPassword }</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="${pageContext.request.contextPath }/page/updateAdmin.jsp" class="btn btn-default">修改</a><a href="" class="btn btn-danger">删除</a>
+                                            <a href="${pageContext.request.contextPath }/page/updateAdmin.jsp?id=${user.id }&name=${user.userName }&password=${user.userPassword }" class="btn btn-default">修改</a>
+                                            <a href="${pageContext.request.contextPath }/UserServlet?method=delete&id=${user.id }" class="btn btn-danger">删除</a>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
+                             </c:forEach>
                         </table>
                         <a href="${pageContext.request.contextPath }/page/addAdmin.jsp" target="right" class="btn btn-default">添加</a>
                     </div>

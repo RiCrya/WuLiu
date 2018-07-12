@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'companyList.jsp' starting page</title>
+    <title>My JSP 'adminList.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ol class="breadcrumb">
                         <li class="active">主页
                         </li>
-                        <li class="active">物流公司价格信息
+                        <li class="active">地点设置
                         </li>
                     </ol>
 
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            	 搜索
                         </div>
                         <div class="panel-body">
-                            <form role="form" class="form-inline" method="post" action="${pageContext.request.contextPath }/CompanyServlet?method=search">
+                            <form role="form" class="form-inline" method="post" action="${pageContext.request.contextPath }/SiteServlet?method=search">
                                 <div class="form-group">
                                     <label for="name">名称</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="请输入名称">
@@ -59,35 +59,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <thead>
                                 <tr>
                                     <th>编号</th>
-                                    <th>名称</th>
-                                    <th>起始地点</th>
-                                    <th>目标地点</th>
-                                    <th>货物类型</th>
-                                    <th>价格</th>
+                                    <th>地点</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
-                            <c:forEach items="${list }" var="company">
+                            <c:forEach items="${list }" var="site">
                             <tbody>
                                 <tr>
-                                    <td>${company.id }</td>
-                                    <td>${company.companyName }</td>
-                                    <td>${company.site_name }</td>
-                                    <td>${company.site_name1 }</td>
-                                    <td>${company.typeName }</td>
-                                    <td>${company.price }</td>
+                                    <td>${site.id }</td>
+                                    <td>${site.site_name } </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="${pageContext.request.contextPath }/page/updateCompany.jsp?id=${company.id}&name=${company.companyName }&startSite=${company.start_site_id }&endSite=${company.end_site_id }&type=${company.type_id }&price=${company.price } "class="btn btn-default">修改</a>
-                                            <a href="${pageContext.request.contextPath }/CompanyServlet?method=delete&id=${company.id}" class="btn btn-danger">删除</a>
+                                            <a href="${pageContext.request.contextPath }/page/updateSite.jsp?id=${site.id }&name=${site.site_name }" class="btn btn-default">修改</a>
+                                            <a href="${pageContext.request.contextPath }/SiteServlet?method=delete&id=${site.id }" class="btn btn-danger">删除</a>
                                         </div>
-
                                     </td>
                                 </tr>
                             </tbody>
                             </c:forEach>
                         </table>
-                        <a href="${pageContext.request.contextPath }/page/addCompany.jsp" target="right" class="btn btn-default">添加</a>
+                        <a href="${pageContext.request.contextPath }/page/addSite.jsp" target="right" class="btn btn-default">添加</a>
                     </div>
                     <ul class="pagination" style="float: right;">
                         <li><a href="#">&laquo;</a>

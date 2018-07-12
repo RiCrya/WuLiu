@@ -9,17 +9,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>后台管理</title>
+    <title>My JSP 'top.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css">
-	<script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<meta http-equiv="description" content="This is my page">
 	<script src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap-select.min.css">
+	<script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/bootstrap-select.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/defaults-zh_CN.min.js"></script>
 
   </head>
   
@@ -36,13 +38,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="collapse navbar-collapse" id="example-navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a class="icon-bar" href="#">物流信息系统后台</a>
+                        <li class="active"><a class="icon-bar" href="#">物流信息系统</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>欢迎您,${param.userName}</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath }/UserServlet?method=logout">安全退出</a>
+                        <li><a href="${pageContext.request.contextPath }/login.jsp" target="_blank">进入后台</a>
                         </li>
                     </ul>
                 </div>

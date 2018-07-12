@@ -164,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="container">
     		<div class="row">
         		<div class="col-md-offset-3 col-md-6">
-            		<form class="form-horizontal" method="post" action="${pageContext.request.contextPath }/UserServlet">
+            		<form class="form-horizontal" method="post" action="${pageContext.request.contextPath }/UserServlet?method=login">
                 		<span class="heading">管理员登录</span>
                 		<div class="form-group">
                     		<input type="text" class="form-control" name="userName" id="inputEmail3" placeholder="用户名">
@@ -176,11 +176,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                    <a href="#" class="fa fa-question-circle"></a>
 		                </div>
                 		<div class="form-group">
-		                    <div class="main-checkbox">
-		                        <input type="checkbox" value="None" id="checkbox1" name="check"/>
-		                        <label for="checkbox1"></label>
-		                    </div>
-	                    <span class="text">记住我</span>
 	                    <button type="submit" class="btn btn-default">登录</button>
                			</div>
            			 </form>

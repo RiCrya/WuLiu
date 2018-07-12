@@ -20,7 +20,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css">
 	<script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
-
+	<script type="text/javascript">
+		function myCheck()
+            {//循环所有的表单元素； 也可以用jQuery：$("#表单id")[0].elements.length-1
+               for(var i=0;i<document.form1.elements.length-1;i++) //下面减一是因为数组的下标为0
+               {	
+                  if(document.form1.elements[i].value=="")
+                  {
+                     alert("当前表单不能有空项");
+                     document.form1.elements[i].focus();
+                     return false;
+                  }
+               }
+               return true;
+            }
+	
+	</script>
   </head>
   
   <body>
@@ -35,17 +50,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="active">管理员添加
                         </li>
                     </ol>
-                    <form role="form">
+                    <form role="form" action="${pageContext.request.contextPath}/UserServlet?method=update?id=${param.id }" method="post" name="form1" onsubmit="return myCheck()" >
                     	<div class="row">
 							<div class="col-lg-3 form-group">
 								<label for="name">&nbsp;用户名</label>
-								<input type="text" class="form-control" placeholder="文本输入">
+								<input type="text" class="form-control" name="userName" placeholder="文本输入" value="${param.name }">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-3 form-group">
 								<label for="name">&nbsp;密码</label>
-								<input type="text" class="form-control" placeholder="文本输入">
+								<input type="text" class="form-control" name="userPassword" placeholder="文本输入" value="${param.password }">
 							</div>
 						</div>
 						<div class="row">

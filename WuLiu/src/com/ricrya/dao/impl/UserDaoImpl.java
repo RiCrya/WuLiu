@@ -9,7 +9,7 @@ import com.ricrya.dao.UserDao;
 import com.ricrya.entity.User;
 import com.ricrya.utils.ComPoolUtil;
 
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao  {
 
 	public User getByUserName(String userName) {
 		User user = new User();
